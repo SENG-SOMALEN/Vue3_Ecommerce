@@ -1,6 +1,6 @@
 <template>
     <Navbar/>
-    <NwesLetter/>
+    <Shop/>
 
 </template>
 
@@ -13,5 +13,9 @@ import Flashsale from './components/homepage/Flashsale.vue';
 import NewArrivals from './components/homepage/NewArrivals.vue';
 import Testimonials from './components/homepage/Testimonials.vue';
 import NwesLetter from './components/homepage/NwesLetter.vue';
+import ProductCard from './components/shoppage/ProductCard.vue';
+import SearchBar from './components/shoppage/SearchBar.vue';
+import FilterSidebar from './components/shoppage/FilterSidebar.vue';
+import Shop from './pages/Shop.vue';
 
 </script>
