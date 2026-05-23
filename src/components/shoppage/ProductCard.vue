@@ -21,13 +21,17 @@
                     class="group bg-white rounded-2xl overflow-hidden border border-stone-100 hover:border-stone-300 hover:shadow-lg transition-all duration-300 flex flex-col">
                     <!-- Image -->
                     <div class="relative overflow-hidden bg-stone-100 h-64">
-                        <img :src="product.images?.[0]" :alt="product.title"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        <!-- Category Badge -->
-                        <span v-if="product.category"
-                            class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-stone-600 text-xs font-medium px-2.5 py-1 rounded-full">
-                            {{ product.category?.name ?? product.category }}
-                        </span>
+
+                        <router-link :to="{name: 'ProductDetail', params: {id: product.id}}">
+                            <img :src="product.images?.[0]" :alt="product.title"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <!-- Category Badge -->
+                            <span v-if="product.category"
+                                class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-stone-600 text-xs font-medium px-2.5 py-1 rounded-full">
+                                {{ product.category?.name ?? product.category }}
+                            </span>
+                        </router-link>
+
                         <!-- Wishlist -->
                         <button
                             class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
@@ -57,7 +61,7 @@
                                 </svg>
                             </template>
                             <span class="text-xs text-stone-400 ml-1">({{ product.rating?.toFixed(1) ?? '0.00'
-                                }})</span>
+                            }})</span>
                         </div>
 
                         <!-- Price & CTA -->
@@ -80,9 +84,10 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 
 // ==== logic
-const prop = defineProps({
+defineProps({
     items: {
         type: Array,
         required: true

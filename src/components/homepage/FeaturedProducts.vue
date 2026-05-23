@@ -1,6 +1,6 @@
 <template>
     <!-- Feature Products -->
-    <section class="bg-gray-700">
+    <section class="">
         <div class="px-6 max-w-6xl mx-auto">
             <div class="text-center pt-14">
                 <BaseButton class="py-4 px-20"/> →
