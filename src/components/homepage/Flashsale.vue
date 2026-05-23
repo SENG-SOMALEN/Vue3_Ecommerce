@@ -1,43 +1,147 @@
 <template>
-    <section class="max-w-6xl mx-auto px-6">
-        <div class="flex justify-between items-center mb-12">
-            <div>
-                <p class="text-xs">limited Time</p>
-                <h2 class="text-5xl">Flash Sale</h2>
-            </div>
-            <div class="flex gap-3 text-3xl font-semibold">
-                <span>:</span>
-                <span>:</span>
-            </div>
-        </div>
+    <!-- Flash Sale -->
+    <section class="bg-[#f7f7f5] py-24 overflow-hidden">
 
-        <div class="flash-scroll-track overflow-x-auto pb-6 -mx-6 px-6">
-            <div class="flex gap-6" style="width: max-content;">
+        <div class="max-w-7xl mx-auto px-6">
 
-                <div v-for="flash in flashProduct" :key="flash.id" class="w-[220px] bg-[#141828] relative rounded-sm overflow-hidden flex-shrink-0 group cursor-pointer">
-                <div class="relative overflow-hidden h-[200px]">
-                    <img :src="flash.images" :alt="flash.name" class="w-full h-full object-center transition-transform duration-500 group-hover:scale-105" style="filter: saturate(0.8);">
+            <!-- HEADER -->
+            <div
+                class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-16">
 
-                    <!-- Discount badge -->
-                    <div class="absolute top-3 left-3 px-2 py-1 text-xs font-bold bg-[#c9a84c] text-[#0a0e1a]">
-                        -{{ getDiscount() }}%
-                    </div>
+                <div class="text-center lg:text-left">
+
+                    <p
+                        class="uppercase tracking-[0.25em] text-sm text-gray-500 mb-4">
+                        Limited Time
+                    </p>
+
+                    <h2
+                        class="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900">
+                        Flash Sale
+                    </h2>
+
                 </div>
 
-                <div class="p-4">
-                    <p class="text-xs truncate mb-1 text-[#9a9580]">{{ flash.category?.name || 'General' }}</p>
-                    <h3 class="text-sm font-light truncate text-[#f0ece2]">{{ flash.title }}</h3>
-                    <div class="flex gap-2 items-center mt-2">
-                        <span class="text-base font-medium text-[#c9a84c]">${{ discountedPrice(flash.price) }}</span>
-                        <span class="text-xs line-through text-[#9a9580]">${{ flash.price }}</span>
+                <!-- COUNTDOWN -->
+                <div class="flex items-center gap-4">
+
+                    <div
+                        class="w-20 h-20 rounded-3xl bg-white shadow-sm flex flex-col items-center justify-center">
+
+                        <span class="text-2xl font-semibold text-gray-900">
+                            12
+                        </span>
+
+                        <span class="text-xs uppercase tracking-widest text-gray-500">
+                            Hours
+                        </span>
+
                     </div>
+
+                    <div
+                        class="w-20 h-20 rounded-3xl bg-white shadow-sm flex flex-col items-center justify-center">
+
+                        <span class="text-2xl font-semibold text-gray-900">
+                            45
+                        </span>
+
+                        <span class="text-xs uppercase tracking-widest text-gray-500">
+                            Min
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="w-20 h-20 rounded-3xl bg-white shadow-sm flex flex-col items-center justify-center">
+
+                        <span class="text-2xl font-semibold text-gray-900">
+                            18
+                        </span>
+
+                        <span class="text-xs uppercase tracking-widest text-gray-500">
+                            Sec
+                        </span>
+
+                    </div>
+
                 </div>
+
             </div>
+
+            <!-- PRODUCTS -->
+            <div
+                class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+
+                <div
+                    v-for="flash in flashProduct"
+                    :key="flash.id"
+                    class="group min-w-[280px] max-w-[280px] bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl duration-500 flex-shrink-0 snap-start cursor-pointer">
+
+                    <!-- IMAGE -->
+                    <div class="relative overflow-hidden">
+
+                        <img
+                            :src="flash.images"
+                            :alt="flash.title"
+                            class="w-full h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+
+                        <!-- BADGE -->
+                        <div
+                            class="absolute top-4 left-4 px-4 py-2 rounded-full bg-black text-white text-xs tracking-wider">
+
+                            -{{ getDiscount() }}%
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTENT -->
+                    <div class="p-6">
+
+                        <p
+                            class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+
+                            {{ flash.category?.name || 'Collection' }}
+
+                        </p>
+
+                        <h3
+                            class="text-xl font-medium text-gray-900 line-clamp-1 mb-4">
+
+                            {{ flash.title }}
+
+                        </h3>
+
+                        <!-- PRICE -->
+                        <div class="flex items-center gap-3">
+
+                            <span
+                                class="text-2xl font-semibold text-gray-900">
+
+                                ${{ discountedPrice(flash.price) }}
+
+                            </span>
+
+                            <span
+                                class="text-sm text-gray-400 line-through">
+
+                                ${{ flash.price }}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 </template>
-
 <script setup>
     import { onMounted, ref } from 'vue';
     import { product_Data } from '../../api/ProductApi';

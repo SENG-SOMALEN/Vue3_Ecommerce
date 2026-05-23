@@ -1,22 +1,82 @@
 <template>
   <transition name="search-slide">
-    <div v-if="isOpen" class="navbar__search-wrapper absolute left-0 right-0 top-14 z-40">
-      <div class="navbar__search-bar bg-black border-t border-gray-800 flex items-center shadow-lg w-full h-14">
-        <div class="w-full max-w-6xl mx-auto flex items-center justify-between px-6">
-          <div class="flex items-center space-x-4 w-full">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-gray-400 flex-shrink-0">
-              <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5" />
-              <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-            <input 
-              ref="searchInput"
-              class="border-0 outline-none bg-transparent text-base text-white placeholder-gray-400 font-light w-full" 
-              type="text" 
-              placeholder="Search products, categories..." 
-              maxlength="100"
+    <div
+      v-if="isOpen"
+      class="absolute left-0 right-0 top-16 z-40"
+    >
+      <!-- SAME STYLE AS NAVBAR -->
+      <div
+        class="
+          bg-black/80
+          backdrop-blur-2xl
+          border-b border-white/10
+        "
+      >
+        <div
+          class="
+            max-w-7xl mx-auto
+            h-16
+            px-6 lg:px-10
+            flex items-center justify-between
+          "
+        >
+          <!-- Search -->
+          <div class="flex items-center gap-4 w-full">
+
+            <!-- Icon -->
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 18 18"
+              fill="none"
+              class="text-gray-400 flex-shrink-0"
             >
+              <circle
+                cx="8"
+                cy="8"
+                r="5.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M12.5 12.5L16 16"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <!-- Input -->
+            <input
+              ref="searchInput"
+              type="text"
+              maxlength="100"
+              placeholder="Search products, categories..."
+              class="
+                w-full
+                bg-transparent
+                border-0
+                outline-none
+                text-white
+                placeholder:text-gray-500
+                text-base
+                font-light
+              "
+            />
           </div>
-          <button @click="$emit('close')" class="text-gray-400 hover:text-white transition-colors text-sm pl-4 flex-shrink-0">✕</button>
+
+          <!-- Close -->
+          <button
+            @click="$emit('close')"
+            class="
+              ml-5
+              text-gray-400
+              hover:text-white
+              transition-all duration-300
+            "
+          >
+            ✕
+          </button>
         </div>
       </div>
     </div>

@@ -1,76 +1,89 @@
 <template>
-    <div class="font-sans max-w-6xl mx-auto px-6">
-        <section class="min-h-[80vh] grid grid-cols-1 lg:grid-cols-2 gap-12 mt-15">
+    <section class="bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
 
-            <!-- left action -->
-            <div class="w-full flex flex-col items-center justify-center lg:justify-start lg:items-start">
-                <p class="uppercase text-xs mb-8">New Season Collection </p>
-                <h1 class="text-7xl mb-8">
-                    Curated <br>
-                    <em>Luxury</em><br>
-                    Awaits You
-                </h1>
-                <p class="text-lg mb-8 max-w-md mx-auto lg:mx-0"> Discover handpicked products that define modern
-                    elegance. From timeless classics to
-                    bold statements — every piece tells a story. </p>
-                <div class="mb-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
-                    <BaseButton class="px-10 py-4 " />
-                    <BaseButton class="px-10 py-4" />
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 min-h-screen py-20">
+
+                <!-- LEFT CONTENT -->
+                <div class="text-center lg:text-left">
+
+                    <p class="uppercase tracking-[0.25em] text-sm text-gray-500 mb-6">
+                        New Season Collection
+                    </p>
+
+                    <h1
+                        class="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-tight text-gray-900 mb-8">
+                        Curated
+                        <br>
+                        <span class="italic font-light">
+                            Luxury
+                        </span>
+                        <br>
+                        Awaits You
+                    </h1>
+
+                    <p class="text-lg text-gray-500 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
+                        Discover handpicked products that define modern elegance.
+                        From timeless classics to bold statements — every piece
+                        tells a story.
+                    </p>
+
+                    <!-- BUTTONS -->
+                    <div
+                        class="flex flex-col sm:flex-row items-center lg:items-start gap-4">
+
+                        <button
+                            class="px-8 py-4 rounded-full bg-black text-white hover:scale-105 duration-300">
+                            Shop Now
+                        </button>
+
+                        <button
+                            class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 duration-300">
+                            Explore
+                        </button>
+
+                    </div>
+
                 </div>
 
-                <div data-v-933e9cdf=""
-                    class="flex gap-8 justify-center lg:justify-start pt-4 __web-inspector-hide-shortcut__">
-                    <div data-v-933e9cdf="" class="text-center lg:text-left">
-                        <p data-v-933e9cdf="" class="text-2xl font-light" style="color: rgb(201, 168, 76);">12K+</p>
-                        <p data-v-933e9cdf="" class="text-xs tracking-widest uppercase mt-1"
-                            style="color: rgb(154, 149, 128); font-family: &quot;DM Mono&quot;, monospace;">Products</p>
-                    </div>
-                    <div data-v-933e9cdf="" class="text-center lg:text-left">
-                        <p data-v-933e9cdf="" class="text-2xl font-light" style="color: rgb(201, 168, 76);">98%</p>
-                        <p data-v-933e9cdf="" class="text-xs tracking-widest uppercase mt-1"
-                            style="color: rgb(154, 149, 128); font-family: &quot;DM Mono&quot;, monospace;">Satisfaction
+                <!-- RIGHT IMAGE -->
+                <div class="relative">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+                        alt="Luxury Collection"
+                        class="w-full h-[500px] lg:h-[700px] object-cover rounded-[40px]"
+                    >
+
+                    <!-- FLOATING CARD -->
+                    <div
+                        class="absolute bottom-6 left-6 bg-white/80 backdrop-blur-xl rounded-3xl px-6 py-4 shadow-xl border border-white/50">
+
+                        <p class="text-sm text-gray-500 mb-1">
+                            Today's Pick
                         </p>
+
+                        <h4 class="text-lg font-medium text-gray-900">
+                            Premium Lifestyle Goods
+                        </h4>
+
+                        <div class="flex gap-1 mt-2 text-yellow-500 text-xs">
+                            <span v-for="i in 5" :key="i">★</span>
+                        </div>
+
                     </div>
-                    <div data-v-933e9cdf="" class="text-center lg:text-left">
-                        <p data-v-933e9cdf="" class="text-2xl font-light" style="color: rgb(201, 168, 76);">150+</p>
-                        <p data-v-933e9cdf="" class="text-xs tracking-widest uppercase mt-1"
-                            style="color: rgb(154, 149, 128); font-family: &quot;DM Mono&quot;, monospace;">Brands</p>
+
+                    <!-- DECORATIVE BLUR -->
+                    <div
+                        class="absolute -top-10 -right-10 w-40 h-40 bg-gray-200 rounded-full blur-3xl opacity-40">
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Right action -->
-            <div class="w-full relative flex-1">
-
-                <img data-v-933e9cdf=""
-                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&amp;q=80"
-                    alt="Featured collection" class="mosaic-main rounded-sm object-cover w-full h-[480px] lg:h-[560px]"
-                    style="filter: saturate(0.85) contrast(1.05);">
-
-                <!-- Floating accent card -->
-                <div class="accent-card absolute bottom-8 lg:bottom-22 -left-8 p-4 rounded-sm shadow-2xl"
-                    style="background:#0d1225; border:1px solid #c9a84c33; backdrop-filter:blur(12px);">
-                    <p class="text-xs tracking-widest uppercase mb-1"
-                        style="color:#c9a84c; font-family:'DM Mono',monospace;">Today's Pick</p>
-                    <p class="text-sm font-light" style="color:#f0ece2;">Premium Lifestyle Goods</p>
-                    <div class="flex gap-1 mt-2">
-                        <span v-for="i in 5" :key="i" style="color:#c9a84c; font-size:10px;">★</span>
-                    </div>
-                </div>
-                <!-- Decorative ring -->
-                <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full border-2 opacity-30"
-                    style="border-color:#c9a84c;"></div>
-            </div>
-
-            <!-- Scroll cue -->
-            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-                <span class="text-xs tracking-widest uppercase"
-                    style="font-family:'DM Mono',monospace; color:#9a9580;">Scroll</span>
-                <div class="scroll-line w-px h-12"
-                    style="background: linear-gradient(to bottom, #c9a84c, transparent);"></div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </template>
 
 <script setup>

@@ -1,39 +1,85 @@
 <template>
-    <section class="max-w-6xl mx-auto">
+    <section class="max-w-6xl mx-auto px-6 py-16">
         <div>
-            <div v-if="isLoading">
-                loading...
-            </div>
-            <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div v-for="(user, index) in userTestimon" :key="user.id" class="bg-[#0d1225] border border-[#1e2440] p-8 rounded-sm relative overflow-hidden
-           transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-amber-950">
+            <div v-if="isLoading" class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
 
-                    <div class="absolute top-4 right-6 text-6xl font-serif leading-none pointer-events-none"
-                        style="color:#c9a84c18;">"</div>
+                <div v-for="i in 3" :key="i"
+                    class="relative overflow-hidden rounded-2xl p-8 bg-white border border-gray-100">
+
+                    <!-- Quote skeleton -->
+                    <div class="absolute top-4 right-6 text-6xl text-gray-100 font-serif">
+                        "
+                    </div>
+
+                    <!-- Stars skeleton -->
+                    <div class="flex gap-1 mb-5">
+                        <div v-for="s in 5" :key="s" class="w-3 h-3 bg-gray-200 rounded-sm animate-pulse"></div>
+                    </div>
+
+                    <!-- Text skeleton -->
+                    <div class="space-y-3 mb-6">
+                        <div class="h-3 bg-gray-100 rounded w-full animate-pulse"></div>
+                        <div class="h-3 bg-gray-100 rounded w-5/6 animate-pulse"></div>
+                        <div class="h-3 bg-gray-100 rounded w-4/6 animate-pulse"></div>
+                    </div>
+
+                    <!-- User skeleton -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-full bg-gray-100 animate-pulse"></div>
+
+                        <div class="space-y-2">
+                            <div class="h-3 w-24 bg-gray-100 rounded animate-pulse"></div>
+                            <div class="h-2 w-16 bg-gray-100 rounded animate-pulse"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+
+                <div v-for="(user, index) in userTestimon" :key="user.id" class="relative overflow-hidden rounded-2xl p-8
+                    bg-white border border-gray-100
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-lg hover:border-gray-200">
+
+                    <!-- Quote -->
+                    <div
+                        class="absolute top-4 right-6 text-6xl font-serif leading-none pointer-events-none text-gray-100">
+                        "
+                    </div>
 
                     <!-- ⭐ Stars -->
                     <div class="flex gap-1 mb-5">
-                        <span v-for="s in 5" :key="s" class="text-yellow-400" :class="s <= user.rating ? 'text-yellow-400' : 'text-gray-600'">
+                        <span v-for="s in 5" :key="s" class="text-sm"
+                            :class="s <= user.rating ? 'text-yellow-400' : 'text-gray-200'">
                             ★
                         </span>
                     </div>
 
                     <!-- 📝 Text -->
-                    <p class="text-sm leading-relaxed mb-6 italic text-[#9a9580]">
+                    <p class="text-sm leading-relaxed mb-6 text-gray-600">
                         "{{ testimonials[index].text }}"
                     </p>
 
                     <!-- 👤 User -->
                     <div class="flex items-center gap-4">
-                        <img :src="user.avatar" :alt="user.name" class="w-10 h-10 rounded-full object-cover"
-                            style="filter:saturate(0.7);">
+                        <img :src="user.avatar" :alt="user.name"
+                            class="w-11 h-11 rounded-full object-cover ring-1 ring-gray-100" />
 
                         <div>
-                            <h3 class="text-sm font-medium text-[#f0ece2]">{{ user.name }}</h3>
-                            <p class="text-xs text-[#9a9580]">{{ user.role }}</p>
+                            <h3 class="text-sm font-medium text-gray-900">
+                                {{ user.name }}
+                            </h3>
+                            <p class="text-xs text-gray-500">
+                                {{ user.role }}
+                            </p>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </section>
