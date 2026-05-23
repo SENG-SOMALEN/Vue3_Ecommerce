@@ -1,7 +1,7 @@
 <template>
     <!-- add to cart -->
      <section>
-        <h1>KKK</h1>
+        <h1>KKKogt</h1>
      </section>
 </template>
 
