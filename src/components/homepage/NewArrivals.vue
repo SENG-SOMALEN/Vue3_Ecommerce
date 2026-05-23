@@ -2,7 +2,7 @@
   <!-- New Arrivals -->
   <section class="max-w-6xl mx-auto px-6 mt-20">
 
-    <!-- Loading -->
+      <!-- Loading -->
     <div v-if="isLoading" class="grid grid-cols-2 md:grid-cols-4 gap-6">
       <div
         v-for="i in 4"

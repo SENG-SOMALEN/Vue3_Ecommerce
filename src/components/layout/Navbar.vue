@@ -6,7 +6,7 @@
       <div class="flex items-center justify-between h-16">
 
         <!-- LEFT -->
-        <div class="flex items-center gap-10">
+        <div class="flex items-center gap-10 ">
           <!-- Logo -->
           <router-link
             to="/"

@@ -1,6 +1,7 @@
 <template>
     <section>
         <aside
+        
             class="w-full lg:w-72 rounded-3xl p-5 bg-stone-100 lg:self-start lg:sticky lg:top-6 shadow-md border border-stone-200">
 
             <div class="mb-6">

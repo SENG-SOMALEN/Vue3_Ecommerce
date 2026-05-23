@@ -4,7 +4,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 min-h-screen py-20">
 
-                <!-- LEFT CONTENT -->
+                    <!-- LEFT CONTENT -->
                 <div class="text-center lg:text-left">
 
                     <p class="uppercase tracking-[0.25em] text-sm text-gray-500 mb-6">

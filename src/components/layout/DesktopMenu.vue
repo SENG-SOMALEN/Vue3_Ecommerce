@@ -1,5 +1,5 @@
 <template>
-  <ul class="hidden lg:flex items-center space-x-6 font-sans text-[16px] font-semibold text-gray-300 ml-8 lg:flex-grow">
+  <ul class=" hidden lg:flex items-center space-x-6 font-sans text-[16px] font-semibold text-gray-300 ml-8 lg:flex-grow">
     
     <li>
       <router-link to="/" class="hover:text-white cursor-pointer transition-colors" active-class="text-white font-bold">

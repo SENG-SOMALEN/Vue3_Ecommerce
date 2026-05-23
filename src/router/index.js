@@ -1,5 +1,6 @@
 // === pages import
 import Shop from '../pages/Shop.vue'
+
 import Home from '../pages/Home.vue'
 import ProductDetail from '../pages/ProductDetail.vue'
 import { createRouter, createWebHistory } from 'vue-router';

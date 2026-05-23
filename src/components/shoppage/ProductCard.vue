@@ -1,5 +1,5 @@
 <template>
-    <section class="px-6 py-10 bg-stone-50 min-h-screen rounded-3xl">
+    <section class=" px-6 py-10 bg-stone-50 min-h-screen rounded-3xl">
 
         <div class="max-w-6xl mx-auto px-6">
 

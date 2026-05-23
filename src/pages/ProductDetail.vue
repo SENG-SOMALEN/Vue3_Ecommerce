@@ -1,6 +1,5 @@
 <template>
     <div class="min-h-screen bg-gray-100 py-10 px-4">
-        
         <div class="max-w-6xl mx-auto mb-6">
             <button 
                 @click="$router.back()" 

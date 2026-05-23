@@ -1,6 +1,5 @@
 <template>
     <section class="max-w-6xl mx-auto px-6 lg:h-[calc(100vh-2rem)] lg:overflow-hidden">
-        
         <div class="flex flex-col gap-6 lg:flex-row lg:items-stretch mt-5 lg:h-full">
             
             <FilterSidebar @changeCategories="handleCategories"

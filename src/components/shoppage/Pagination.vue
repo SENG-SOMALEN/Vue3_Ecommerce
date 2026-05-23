@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-wrap items-center justify-center gap-3 rounded-3xl bg-white p-4 shadow-sm border border-stone-100">
-    <button
-      type="button"
+    <button type="button"
       class="rounded-full bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700 transition hover:bg-stone-200 disabled:cursor-not-allowed disabled:opacity-50"
       :disabled="currentPage === 1"
       @click="$emit('pageChange', currentPage - 1)"

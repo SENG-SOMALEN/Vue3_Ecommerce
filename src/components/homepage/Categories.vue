@@ -4,7 +4,7 @@
 
         <div class="max-w-7xl mx-auto px-6">
 
-            <!-- HEADER -->
+                <!-- HEADER -->
             <div class="flex flex-col lg:flex-row items-center justify-between gap-6 mb-16">
 
                 <div class="text-center lg:text-left">

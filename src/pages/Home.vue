@@ -2,7 +2,6 @@
     <main class="bg-[#f7f7f5] text-gray-900 overflow-hidden">
 
         <HeroBanner />
-
         <section class="space-y-24 py-24">
             <FeaturedProducts />
             <Categories />

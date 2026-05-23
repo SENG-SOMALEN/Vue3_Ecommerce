@@ -2,7 +2,7 @@
   <section
     class="relative overflow-hidden py-40 px-6 lg:px-16 bg-white"
   >
-    <!-- Apple White Background -->
+      <!-- Apple White Background -->
     <div class="absolute inset-0">
       <!-- soft gradient -->
       <div

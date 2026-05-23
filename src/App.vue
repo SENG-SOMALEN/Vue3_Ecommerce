@@ -3,6 +3,7 @@
         <Navbar/>
         <Shop/><router-view></router-view>
         <Footer></Footer>
+        
     </div>
 
 

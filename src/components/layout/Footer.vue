@@ -2,7 +2,7 @@
   <footer class="bg-white border-t border-gray-100">
 
     <!-- Main footer -->
-    <div class="py-16 text-gray-500">
+    <div class="py-16 text-gray-500 ">
       <div class="max-w-6xl mx-auto px-6">
 
         <div class="flex flex-wrap justify-between gap-10">

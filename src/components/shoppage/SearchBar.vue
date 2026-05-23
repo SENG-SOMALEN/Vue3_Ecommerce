@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="max-w-6xl mx-auto px-6">
+        <div class=" max-w-6xl mx-auto px-6">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-5 gap-5 rounded-3xl bg-stone-100 shadow-sm mb-6 border border-stone-200">
                 <div>
                     <p class="text-xs text-gray-500">Shop our latest curated collection</p>

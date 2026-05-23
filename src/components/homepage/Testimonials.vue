@@ -1,5 +1,6 @@
 <template>
     <section class="max-w-6xl mx-auto px-6 py-16">
+        <!-- edd -->
         <div>
             <div v-if="isLoading" class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
 

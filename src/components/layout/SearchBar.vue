@@ -5,8 +5,7 @@
       class="absolute left-0 right-0 top-16 z-40"
     >
       <!-- SAME STYLE AS NAVBAR -->
-      <div
-        class="
+      <div class="
           bg-black/80
           backdrop-blur-2xl
           border-b border-white/10
