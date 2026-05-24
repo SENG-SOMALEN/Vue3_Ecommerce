@@ -69,13 +69,13 @@
 
                     <div class="mt-10">
                         <div class="flex items-center gap-4 mb-6">
-                            <button class="w-10 h-10 rounded-lg bg-gray-200 hover:bg-gray-300 font-bold">-</button>
-                            <span class="text-xl font-semibold">1</span>
-                            <button class="w-10 h-10 rounded-lg bg-gray-200 hover:bg-gray-300 font-bold">+</button>
+                            <button @click="detailQuantity > 1 ? detailQuantity-- : null" class="w-10 h-10 rounded-lg bg-gray-200 hover:bg-gray-300 font-bold">-</button>
+                            <span class="text-xl font-semibold">{{ detailQuantity }}</span>
+                            <button @click="detailQuantity++" class="w-10 h-10 rounded-lg bg-gray-200 hover:bg-gray-300 font-bold">+</button>
                         </div>
 
                         <div class="flex gap-4">
-                            <button class="flex-1 bg-black text-white py-4 rounded-2xl hover:bg-gray-800 transition active:scale-95">
+                            <button @click="handleAddToCart" class="flex-1 bg-black text-white py-4 rounded-2xl hover:bg-gray-800 transition active:scale-95">
                                 Add to Cart
                             </button>
                             <button class="px-6 py-4 border rounded-2xl hover:bg-gray-100 transition">
@@ -98,17 +98,21 @@
 <script setup>
     import { onMounted, ref } from 'vue';
     import { useRoute, RouterLink } from 'vue-router';
-    // api product
+    // == api product
     import { product_Data } from '../api/ProductApi';
+
+    // === use store import
+    import { useCartStore } from '../stores/cart';
 
     // state
     const route = useRoute();
     const products = ref(null);
     const loading = ref(true);
-    const selectedImage = ref(""); // ១. កែឈ្មោះទៅជា selectedImage ឱ្យត្រូវជាមួយ template
+    const selectedImage = ref("");
 
     const productId = route.params.id;
 
+    // === fetch api 
     onMounted(async () => {
         try {
             const response = await product_Data();
@@ -135,4 +139,23 @@
             loading.value = false; // ៣. កែសម្រួលដោយថែម .value ដើម្បីបាត់ Error ក្រហម
         }
     });
+
+    // === use store
+    const cartStore = useCartStore();
+    const detailQuantity = ref(1);
+
+    const handleAddToCart = () => {
+        if (products.value) {
+            const productWithQuantity = {
+                ...products.value,
+                quantity: detailQuantity.value
+            };
+
+            cartStore.addToCart(productWithQuantity);
+
+            detailQuantity.value = 1;
+
+            alert("Item successfully added to cart!")
+        }
+    };
 </script>

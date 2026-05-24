@@ -70,7 +70,7 @@
                             <span class="text-base font-bold text-stone-900">
                                 ${{ product.price ? product.price.toFixed(2) : '0.00' }}
                             </span>
-                            <button
+                            <button @click="cartStore.addToCart(product)"
                                 class="bg-stone-900 text-white text-xs font-medium px-4 py-2 rounded-xl hover:bg-stone-700 active:scale-95 transition-all duration-150">
                                 Add to Cart
                             </button>
@@ -84,9 +84,12 @@
 </template>
 
 <script setup>
+// == use router import
 import { RouterLink } from 'vue-router';
+// == use stores import
+import { useCartStore } from '../../stores/cart';
 
-// ==== logic
+// ==== logic propr
 defineProps({
     items: {
         type: Array,
@@ -97,4 +100,7 @@ defineProps({
         default: true
     }
 })
+
+// === store logic
+const cartStore = useCartStore();
 </script>

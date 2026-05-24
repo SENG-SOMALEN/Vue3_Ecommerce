@@ -1,8 +1,10 @@
 // === pages import
-import Shop from '../pages/Shop.vue'
-
 import Home from '../pages/Home.vue'
+import Shop from '../pages/Shop.vue'
 import ProductDetail from '../pages/ProductDetail.vue'
+import Cart from '../pages/Cart.vue';
+
+// === routes import
 import { createRouter, createWebHistory } from 'vue-router';
 
 // === routs path like
@@ -16,6 +18,11 @@ const routes = [
         path: "/shop",
         name: "Shop",
         component: Shop
+    },
+    {
+        path: "/cart", 
+        name: "Cart",
+        component: Cart
     },
     {
         path: "/product/:id",
