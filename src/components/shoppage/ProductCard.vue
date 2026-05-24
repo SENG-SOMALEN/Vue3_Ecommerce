@@ -33,7 +33,7 @@
                         </router-link>
 
                         <!-- Wishlist -->
-                        <button
+                        <button @click="wishList.toggleWishlist(product)"
                             class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
                             aria-label="Add to wishlist">
                             <svg class="w-4 h-4 text-stone-400 hover:text-rose-500 transition-colors" fill="none"
@@ -84,10 +84,12 @@
 </template>
 
 <script setup>
-// == use router import
+// === use router import
 import { RouterLink } from 'vue-router';
-// == use stores import
+// === use stores cart import
 import { useCartStore } from '../../stores/cart';
+// === use sotre wishlist 
+import { useWishlistStore } from '../../stores/wishlist';
 
 // ==== logic propr
 defineProps({
@@ -101,6 +103,8 @@ defineProps({
     }
 })
 
-// === store logic
+// === store cart logic
 const cartStore = useCartStore();
+// === store wishlsit logic
+const wishList = useWishlistStore();
 </script>

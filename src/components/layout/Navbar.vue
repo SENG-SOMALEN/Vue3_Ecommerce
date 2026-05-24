@@ -39,12 +39,18 @@
           </button>
 
           <!-- Wishlist -->
-          <router-link to="/wishlist" class="text-gray-400 hover:text-white transition-all duration-300"
+          <router-link to="/wishlist" class="group relative text-gray-400 hover:text-white transition-all duration-300"
             aria-label="Wishlist">
-            <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none"
+              class="group-hover:scale-110 transition-transform duration-300">
               <path d="M9 15S2 10.5 2 6a4 4 0 017-2.65A4 4 0 0116 6c0 4.5-7 9-7 9z" stroke="currentColor"
                 stroke-width="1.5" stroke-linejoin="round" />
             </svg>
+
+            <span v-if="wishListStore.wishList.length > 0"
+              class="absolute -top-2 -right-2 min-w-4 h-4 px-1 flex items-center justify-center rounded-full bg-red-600 text-white text-[10px] font-semibold shadow-md pointer-events-none">
+              {{ wishListStore.wishList.length }}
+            </span>
           </router-link>
 
           <!-- Cart -->
@@ -62,7 +68,7 @@
               </svg>
 
               <!-- badge -->
-              <span
+              <span v-if="cartStore.carts && cartStore.carts.length > 0"
                 class="absolute -top-2 -right-2 min-w-4 h-4 px-1 flex items-center justify-center rounded-full bg-red-600 text-white text-[10px] font-semibold shadow-md">
                 {{ cartStore.carts.length }}
               </span>
@@ -145,6 +151,8 @@ import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 // == use store import
 import { useCartStore } from '../../stores/cart';
+// use store wishlist
+import { useWishlistStore } from '../../stores/wishlist';
 
 // Imports Components ដែលនៅសល់
 import DesktopMenu from './DesktopMenu.vue';
@@ -162,6 +170,9 @@ const toggleSearch = () => {
 
 // === usr sote
 const cartStore = useCartStore();
+
+// === use wishlist
+const wishListStore = useWishlistStore();
 </script>
 
 
