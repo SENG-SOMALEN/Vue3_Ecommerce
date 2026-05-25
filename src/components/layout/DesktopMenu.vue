@@ -72,7 +72,7 @@ const isDropdownShop = ref(false);
 .dropdown-shop-leave-active {
   transition: opacity 0.2s ease, max-height 0.25s ease;
   max-height: 200px;
-  /* បង្កើនកម្ពស់បន្តិចដើម្បីកុំឱ្យបាំងអក្សរពេលដូរមកប្រើ router-link */
+
   overflow: hidden;
 }
 
