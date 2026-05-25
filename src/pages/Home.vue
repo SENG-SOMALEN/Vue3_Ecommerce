@@ -20,6 +20,6 @@ import FeaturedProducts from '../components/homepage/FeaturedProducts.vue'
 import Categories from '../components/homepage/Categories.vue'
 import Flashsale from '../components/homepage/Flashsale.vue'
 import NewArrivals from '../components/homepage/NewArrivals.vue'
-import NwesLetter from '../components/homepage/NwesLetter.vue'
+import NwesLetter from '../components/homepage/NewsLetter.vue'
 import Testimonials from '../components/homepage/Testimonials.vue'
 </script>
