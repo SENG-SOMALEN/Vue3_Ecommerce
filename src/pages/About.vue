@@ -223,14 +223,10 @@
           <div
             class="rounded-4xl bg-white/5 border border-white/10 p-10 hover:bg-white/10 transition-all duration-500"
           >
-            <div
-              class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-4xl mb-8"
-            >
-              👨‍💻
-            </div>
+            <img :src="userImg" class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-4xl mb-8">
 
             <h3 class="text-3xl font-semibold mb-3">
-              Team Member 02
+              SENG SOMALEN
             </h3>
 
             <p class="text-gray-400 mb-6">
@@ -316,6 +312,7 @@
 </template>
 
 <script setup>
+import userImg from '../assets/user01.jpg'
 const techStack = [
   {
     id: 1,
