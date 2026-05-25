@@ -4,7 +4,7 @@
 
         <div class="max-w-7xl mx-auto px-6">
 
-                <!-- HEADER -->
+            <!-- HEADER -->
             <div class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-16">
 
                 <div class="text-center lg:text-left">
@@ -26,16 +26,18 @@
 
                 <!-- BUTTON -->
                 <div>
-                    <button
-                        class="px-8 py-4 rounded-full border border-gray-300 hover:bg-black hover:text-white duration-300 flex items-center gap-3">
+                    <router-link to="/shop">
+                        <button
+                            class="px-8 py-4 rounded-full border border-gray-300 hover:bg-black hover:text-white duration-300 flex items-center gap-3">
 
-                        View Collection
+                            View Collection
 
-                        <span class="text-lg">
-                            →
-                        </span>
+                            <span class="text-lg">
+                                →
+                            </span>
 
-                    </button>
+                        </button>
+                    </router-link>
                 </div>
 
             </div>
@@ -44,16 +46,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- CARD -->
-                <div
-                    class="group cursor-pointer">
+                <div class="group cursor-pointer">
 
                     <div class="overflow-hidden rounded-[32px] bg-white">
 
-                        <img
-                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&q=80"
-                            alt=""
-                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500"
-                        >
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&q=80" alt=""
+                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500">
 
                     </div>
 
@@ -76,16 +74,12 @@
                 </div>
 
                 <!-- CARD -->
-                <div
-                    class="group cursor-pointer">
+                <div class="group cursor-pointer">
 
                     <div class="overflow-hidden rounded-[32px] bg-white">
 
-                        <img
-                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80"
-                            alt=""
-                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500"
-                        >
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80" alt=""
+                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500">
 
                     </div>
 
@@ -108,16 +102,12 @@
                 </div>
 
                 <!-- CARD -->
-                <div
-                    class="group cursor-pointer">
+                <div class="group cursor-pointer">
 
                     <div class="overflow-hidden rounded-[32px] bg-white">
 
-                        <img
-                            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80"
-                            alt=""
-                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500"
-                        >
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80" alt=""
+                            class="w-full h-[420px] object-cover group-hover:scale-105 duration-500">
 
                     </div>
 
@@ -147,5 +137,5 @@
 </template>
 
 <script setup>
-    import BaseButton from '../ui/BaseButton.vue';
+import BaseButton from '../ui/BaseButton.vue';
 </script>

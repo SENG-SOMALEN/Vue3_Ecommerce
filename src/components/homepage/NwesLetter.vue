@@ -1,23 +1,16 @@
 <template>
-  <section
-    class="relative overflow-hidden py-40 px-6 lg:px-16 bg-white"
-  >
-      <!-- Apple White Background -->
-    <div class="absolute inset-0">
-      <!-- soft gradient -->
-      <div
-        class="absolute inset-0"
-        style="background:#f5f5f7;"
-      ></div>
+  <section class="relative overflow-hidden py-40 px-6 lg:px-16 bg-white">
 
-      <!-- blur effect -->
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0" style="background:#f5f5f7;"></div>
+
       <div
         class="absolute top-[-250px] left-1/2 -translate-x-1/2
                w-[900px] h-[900px] rounded-full blur-3xl opacity-40"
         style="background:rgba(0,0,0,0.03)"
       ></div>
 
-      <!-- subtle grid -->
       <div
         class="absolute inset-0 opacity-[0.03]"
         style="
@@ -31,24 +24,18 @@
 
     <!-- Content -->
     <div class="relative z-10 max-w-3xl mx-auto text-center">
-      <p
-        class="uppercase tracking-[0.35em] text-xs text-gray-500 mb-6"
-      >
+      <p class="uppercase tracking-[0.35em] text-xs text-gray-500 mb-6">
         Stay Connected
       </p>
 
-      <h2
-        class="text-5xl md:text-7xl font-semibold leading-tight text-black mb-6"
-      >
+      <h2 class="text-5xl md:text-7xl font-semibold leading-tight text-black mb-6">
         Exclusive Access,
         <span class="block text-gray-400 font-light">
           Delivered Daily
         </span>
       </h2>
 
-      <p
-        class="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto mb-12"
-      >
+      <p class="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto mb-12">
         Subscribe for curated drops, early access to new collections,
         and member-only offers. No spam — only the good stuff.
       </p>
@@ -75,16 +62,22 @@
 
         <button
           type="submit"
+          :disabled="loading"
           class="px-10 py-5 rounded-2xl
                  bg-black text-white
                  font-medium
                  hover:bg-gray-800
                  transition-all duration-300
-                 whitespace-nowrap"
+                 whitespace-nowrap disabled:opacity-50"
         >
-          {{ subscribeSuccess ? '✓ Subscribed!' : 'Subscribe' }}
+          {{ subscribeSuccess ? '✓ Subscribed!' : loading ? 'Loading...' : 'Subscribe' }}
         </button>
       </form>
+
+      <!-- message -->
+      <p v-if="message" class="mt-4 text-sm text-gray-500">
+        {{ message }}
+      </p>
 
       <p class="mt-6 text-xs text-gray-400 tracking-wide">
         Unsubscribe at any time · No spam guaranteed
@@ -93,4 +86,39 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const emailInput = ref('')
+const subscribeSuccess = ref(false)
+const loading = ref(false)
+const message = ref('')
+
+const handleSubscribe = async () => {
+  if (!emailInput.value) return
+
+  loading.value = true
+  message.value = ''
+
+  try {
+    // simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    subscribeSuccess.value = true
+    message.value = 'You are now subscribed successfully 🎉'
+
+    // reset input
+    emailInput.value = ''
+
+    // auto reset button state
+    setTimeout(() => {
+      subscribeSuccess.value = false
+    }, 3000)
+
+  } catch (err) {
+    message.value = 'Something went wrong. Please try again.'
+  } finally {
+    loading.value = false
+  }
+}
+</script>

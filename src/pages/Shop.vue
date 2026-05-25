@@ -54,8 +54,11 @@ import ProductCard from '../components/shoppage/ProductCard.vue';
 import FilterSidebar from '../components/shoppage/FilterSidebar.vue';
 import SearchBar from '../components/shoppage/SearchBar.vue';
 import Pagination from '../components/shoppage/Pagination.vue';
-// 💡 កែប្រែ៖ បន្ថែម watch ពី Vue មកជាមួយ
+
+import { useRoute } from 'vue-router';
 import { computed, onMounted, ref, watch } from 'vue';
+
+const route = useRoute();
 
 const products = ref([]);
 const isLoading = ref(true);
@@ -65,20 +68,44 @@ const searchQuery = ref("");
 const sortOrder = ref("default"); 
 const filterPrice = ref(100);
 
-// 💡 បន្ថែម៖ States សម្រាប់ Pagination
 const currentPage = ref(1);
-const itemsPerPage = ref(9); // បង្ហាញ ១២ ផលិតផលក្នុងមួយទំព័រ
+const itemsPerPage = ref(9); 
 
 const handlePrice = (price) => {
     filterPrice.value = price; 
 };
 
+// === មុខងារពិនិត្យ និងចាប់យកទិន្នន័យពី URL Query Parameters ===
+const checkUrlQuery = () => {
+    // ចាប់យក Category ពី URL
+    if (route.query.category) {
+        selectCategory.value = String(route.query.category);
+    } else {
+        selectCategory.value = "all";
+    }
+
+    // ចាប់យកពាក្យគន្លឹះស្វែងរកពី URL (ភ្ជាប់មកពី Search component)
+    if (route.query.search) {
+        searchQuery.value = String(route.query.search);
+    } else {
+        searchQuery.value = "";
+    }
+};
+
 onMounted(async () => {
+    checkUrlQuery(); // ពិនិត្យ URL ពេលទំព័រត្រូវបាន Load ភ្លាម
+    
     try {
         isLoading.value = true;
         const response = await product_Data();
+        
+        // === 💡 ចំណុចកែប្រែការពារការចាប់យក Array ខុសទម្រង់ (ដូចក្នុង search.vue) ===
         if (response && Array.isArray(response)) {
             products.value = response;
+        } else if (response && response.data && Array.isArray(response.data)) {
+            products.value = response.data;
+        } else {
+            products.value = [];
         }
     }
     catch (error) {
@@ -97,53 +124,59 @@ const handleSearch = (text) => {
     searchQuery.value = text;
 };
 
-// 💡 បន្ថែម៖ បើអ្នកប្រើប្រាស់ប្តូរ Category, វាយ Search ឬរំកិលតម្លៃ ត្រូវរុញទៅទំព័រទី ១ វិញភ្លាម
+// === តាមដានរាល់ពេល URL Query ដូរ (ដោះស្រាយបញ្ហាពេលចុច Enter ពីប្រអប់ស្វែងរក) ===
+watch(() => [route.query.category, route.query.search], () => {
+    checkUrlQuery();
+});
+
 watch([selectCategory, searchQuery, filterPrice], () => {
     currentPage.value = 1;
 });
 
-// ការ Filter និង Sort (បានកែសម្រួលត្រង់ matchSearch)
+// === មុខងារចម្រោះផលិតផល (Computed) ===
 const filteredProducts = computed(() => {
     let result = products.value.filter(product => {
         const productName = product.title || product.name || "";
-        const productCatValue = typeof product.category === 'object' ? product.category?.name : product.category;
+        
+        const productCatId = typeof product.category === 'object' ? product.category?.id : product.category;
+        const productCatName = typeof product.category === 'object' ? product.category?.name : product.category;
 
-        // 1. Filter តាម Category Sidebar
+        // ចម្រោះតាមប្រភេទ Category
         const matchCategory = selectCategory.value === "all" ||
-            (productCatValue && String(productCatValue).toLowerCase() === String(selectCategory.value).toLowerCase());
+            (productCatId && String(productCatId).toLowerCase() === String(selectCategory.value).toLowerCase()) ||
+            (productCatName && String(productCatName).toLowerCase() === String(selectCategory.value).toLowerCase());
 
-        // 2. Filter តាមការវាយ Search (ឆែកទាំងឈ្មោះ និង Category)
+        // ចម្រោះតាមពាក្យគន្លឹះស្វែងរក
         const matchSearch = productName.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-                            (productCatValue && String(productCatValue).toLowerCase().includes(searchQuery.value.toLowerCase()));
+                            (productCatName && String(productCatName).toLowerCase().includes(searchQuery.value.toLowerCase()));
 
-        // 3. Filter តាមតម្លៃ
+        // ចម្រោះតាមតម្លៃ
         const matchPrice = Number(product.price ?? 0) <= Number(filterPrice.value);
 
         return matchCategory && matchSearch && matchPrice;
     });
 
+    // រៀបលំដាប់តម្លៃ តូចទៅធំ ឬ ធំទៅតូច
     if (sortOrder.value === "low") {
-        return result.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+        return [...result].sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
     } 
     else if (sortOrder.value === "high") {
-        return result.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
+        return [...result].sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
     }
 
     return result;
 });
-// 💡 បន្ថែម៖ គណនាចំនួនទំព័រសរុប (ផ្អែកលើផលិតផលដែលចម្រោះរួច)
+
 const totalPages = computed(() => {
     return Math.ceil(filteredProducts.value.length / itemsPerPage.value);
 });
 
-// 💡 បន្ថែម៖ កាត់យកផលិតផលទៅបង្ហាញតាមទំព័រនីមួយៗ (Slice)
 const paginatedProducts = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage.value;
     const end = start + itemsPerPage.value;
     return filteredProducts.value.slice(start, end);
 });
 
-// 💡 បន្ថែម៖ Function សម្រាប់ប្តូរទំព័រ និងរំកិលអេក្រង់ទៅលើវិញបែប Smooth
 const handlePageChange = (page) => {
     currentPage.value = page;
     window.scrollTo({

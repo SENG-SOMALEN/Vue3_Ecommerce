@@ -4,7 +4,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 min-h-screen py-20">
 
-                    <!-- LEFT CONTENT -->
+                <!-- LEFT CONTENT -->
                 <div class="text-center lg:text-left">
 
                     <p class="uppercase tracking-[0.25em] text-sm text-gray-500 mb-6">
@@ -29,16 +29,13 @@
                     </p>
 
                     <!-- BUTTONS -->
-                    <div
-                        class="flex flex-col sm:flex-row items-center lg:items-start gap-4">
-
-                        <button
-                            class="px-8 py-4 rounded-full bg-black text-white hover:scale-105 duration-300">
-                            Shop Now
-                        </button>
-
-                        <button
-                            class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 duration-300">
+                    <div class="flex flex-col sm:flex-row items-center lg:items-start gap-4">
+                        <router-link to="/shop">
+                            <button class="px-8 py-4 rounded-full bg-black text-white hover:scale-105 duration-300">
+                                Shop Now
+                            </button>
+                        </router-link>
+                        <button class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 duration-300">
                             Explore
                         </button>
 
@@ -49,11 +46,8 @@
                 <!-- RIGHT IMAGE -->
                 <div class="relative">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
-                        alt="Luxury Collection"
-                        class="w-full h-[500px] lg:h-[700px] object-cover rounded-[40px]"
-                    >
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+                        alt="Luxury Collection" class="w-full h-[500px] lg:h-[700px] object-cover rounded-[40px]">
 
                     <!-- FLOATING CARD -->
                     <div
@@ -74,8 +68,7 @@
                     </div>
 
                     <!-- DECORATIVE BLUR -->
-                    <div
-                        class="absolute -top-10 -right-10 w-40 h-40 bg-gray-200 rounded-full blur-3xl opacity-40">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-gray-200 rounded-full blur-3xl opacity-40">
                     </div>
 
                 </div>
@@ -92,18 +85,43 @@ import BaseButton from '../ui/BaseButton.vue';
 
 <style scoped>
 /* ── Flash sale scrollbar ──────────────────────────────────────── */
-.flash-scroll-track::-webkit-scrollbar        { height: 3px; }
-.flash-scroll-track::-webkit-scrollbar-track  { background: #141828; }
-.flash-scroll-track::-webkit-scrollbar-thumb  { background: #c9a84c44; border-radius: 2px; }
+.flash-scroll-track::-webkit-scrollbar {
+    height: 3px;
+}
+
+.flash-scroll-track::-webkit-scrollbar-track {
+    background: #141828;
+}
+
+.flash-scroll-track::-webkit-scrollbar-thumb {
+    background: #c9a84c44;
+    border-radius: 2px;
+}
 
 /* ── Scroll animation ──────────────────────────────────────────── */
 @keyframes scrollLine {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  50%  { transform: scaleY(1); transform-origin: top; }
-  50.1%{ transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    50.1% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
 }
+
 .scroll-line {
-  animation: scrollLine 1.8s ease-in-out infinite;
+    animation: scrollLine 1.8s ease-in-out infinite;
 }
 </style>

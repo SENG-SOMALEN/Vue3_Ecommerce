@@ -109,7 +109,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- CARD -->
         <div
-          class="rounded-[2rem] border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
+          class="rounded-4xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
         >
           <div
             class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center text-2xl mb-8"
@@ -129,7 +129,7 @@
 
         <!-- CARD -->
         <div
-          class="rounded-[2rem] border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
+          class="rounded-4xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
         >
           <div
             class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center text-2xl mb-8"
@@ -149,7 +149,7 @@
 
         <!-- CARD -->
         <div
-          class="rounded-[2rem] border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
+          class="rounded-4xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-500"
         >
           <div
             class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center text-2xl mb-8"
@@ -196,7 +196,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- MEMBER -->
           <div
-            class="rounded-[2rem] bg-white/5 border border-white/10 p-10 hover:bg-white/10 transition-all duration-500"
+            class="rounded-4xl bg-white/5 border border-white/10 p-10 hover:bg-white/10 transition-all duration-500"
           >
             <div
               class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-4xl mb-8"
@@ -221,7 +221,7 @@
 
           <!-- MEMBER -->
           <div
-            class="rounded-[2rem] bg-white/5 border border-white/10 p-10 hover:bg-white/10 transition-all duration-500"
+            class="rounded-4xl bg-white/5 border border-white/10 p-10 hover:bg-white/10 transition-all duration-500"
           >
             <div
               class="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center text-4xl mb-8"
@@ -264,7 +264,7 @@
         <div
           v-for="tech in techStack"
           :key="tech.id"
-          class="rounded-[2rem] border border-gray-200 py-10 px-6 text-center hover:shadow-xl transition-all duration-300"
+          class="rounded-4xl border border-gray-200 py-10 px-6 text-center hover:shadow-xl transition-all duration-300"
         >
           <div class="text-5xl mb-6">
             {{ tech.icon }}

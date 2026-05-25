@@ -20,7 +20,7 @@
 
                     <div class="space-y-6 overflow-y-auto flex-1 pr-3 custom-scrollbar">
 
-                        <div v-for="item in cartStore.carts" :key="item.id" class="bg-white rounded-[32px] p-6 shadow-sm hover:shadow-xl transition duration-500 border border-gray-100">
+                        <div v-for="item in cartStore.carts" :key="item.id" class="bg-white rounded-4xl p-6 shadow-sm hover:shadow-xl transition duration-500 border border-gray-100">
                             <div class="flex flex-col md:flex-row gap-6 items-start">
                                 
                                 <div class="w-full md:w-[180px] h-[220px] rounded-[28px] overflow-hidden bg-gray-100 shrink-0">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                        <div v-if="cartStore.carts.length === 0" class="text-center py-12 bg-white rounded-[32px] border border-dashed border-gray-200">
+                        <div v-if="cartStore.carts.length === 0" class="text-center py-12 bg-white rounded-4xl border border-dashed border-gray-200">
                             <p class="text-gray-400">Your shopping cart is empty.</p>
                         </div>
 
@@ -77,7 +77,7 @@
 
                 </div>
 
-                <div class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 sticky top-8">
+                <div class="bg-white rounded-4xl p-8 shadow-sm border border-gray-100 sticky top-8">
                     <h2 class="text-3xl font-semibold tracking-tight text-gray-900 mb-8">Order Summary</h2>
                     <div class="space-y-6 pb-8 border-b border-gray-100">
                         <div class="flex items-center justify-between">

@@ -30,7 +30,7 @@
         <div class="flex items-center gap-5">
 
           <!-- Search -->
-          <button @click="toggleSearch" class="text-gray-400 hover:text-white transition-all duration-300"
+          <button @click="toggleSearch" class="text-gray-400 cursor-pointer hover:text-white transition-all duration-300"
             aria-label="Search">
             <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
               <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5" />
@@ -77,18 +77,22 @@
 
           <!-- Desktop Auth -->
           <div class="hidden lg:flex items-center gap-4 ml-2">
-            <button class="text-gray-400 hover:text-white transition-all duration-300" aria-label="Account">
-              <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
-                <circle cx="9" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5" />
-                <path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round" />
-              </svg>
-            </button>
+            <router-link to="/user">
+              <button class="text-gray-400 cursor-pointer hover:text-white transition-all duration-300" aria-label="Account">
+                <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+                </svg>
+              </button>
+            </router-link>
 
-            <button
-              class="px-5 py-2 rounded-xl bg-white text-black text-sm font-medium hover:bg-gray-200 transition-all duration-300">
-              Sign In
-            </button>
+            <router-link to="/register">
+              <button
+                class="px-5 py-2 rounded-xl bg-white text-black text-sm font-medium hover:bg-gray-200 transition-all duration-300 cursor-pointer">
+                Sign In
+              </button>
+            </router-link>
           </div>
 
           <!-- Mobile Menu Button -->
@@ -137,6 +141,15 @@
               Contact
             </router-link>
           </li>
+          <div>
+            <hr class="mb-6">
+            <router-link to="/register">
+              <button
+                class="px-5 py-2 rounded-xl bg-white text-black text-sm font-medium hover:bg-gray-200 transition-all duration-300 cursor-pointer w-full">
+                Sign In
+              </button>
+            </router-link>
+          </div>
         </ul>
       </div>
     </transition>
